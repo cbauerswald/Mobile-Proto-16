@@ -10,16 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.util.Log;
 import android.widget.TextView;
 import android.widget.EditText;
 
 
 import java.util.ArrayList;
 
-/**
- * A placeholder fragment containing a simple view.
- */
 public class MainActivityFragment extends Fragment {
 
     public MainActivityFragment() {
@@ -47,9 +43,8 @@ public class MainActivityFragment extends Fragment {
             public void onClick(View view) {
             FragmentManager fragmentManager = MainActivityFragment.this.getFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            Fragment fragment_main = fragmentManager.findFragmentById(1);
-            fragmentTransaction.remove(fragment_main);
-            fragmentTransaction.add(new SettingsFragment(), "SETTINGS_FRAGMENT");
+
+            fragmentTransaction.replace(R.id.fragment_holder, new SettingsFragment(), "CURRENT_FRAGMENT");
 
             fragmentTransaction.commit();
             }
