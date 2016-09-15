@@ -3,6 +3,7 @@ package cecelia.lesson3hw;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
@@ -36,21 +37,21 @@ public class SettingsFragment extends Fragment {
         blueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setBackgroundColor(view, buttonsToColors.get(blueButton));
+                setBackgroundColor(blueButton, buttonsToColors);
             }
         });
 
         greenButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setBackgroundColor(view, buttonsToColors.get(greenButton));
+                setBackgroundColor(greenButton, buttonsToColors);
             }
         });
 
         roseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setBackgroundColor(view, buttonsToColors.get(roseButton));
+                setBackgroundColor(roseButton, buttonsToColors);
             }
         });
 
@@ -69,10 +70,10 @@ public class SettingsFragment extends Fragment {
         return view;
     }
 
-    private void setBackgroundColor(View v, int colorId) {
+    private void setBackgroundColor(Button button, Map<Button, Integer> buttonsToColors) {
+        int colorId = buttonsToColors.get(button);
         int color = ContextCompat.getColor(getActivity(), colorId);
         View view = getActivity().getWindow().getDecorView();
         view.setBackgroundColor(color);
-
     }
 }

@@ -31,11 +31,13 @@ public class MainActivityFragment extends Fragment {
         TextView todo2 = (TextView) view.findViewById(R.id.textView2);
         TextView todo3 = (TextView) view.findViewById(R.id.textView3);
         TextView todo4 = (TextView) view.findViewById(R.id.textView4);
+        TextView todo5 = (TextView) view.findViewById(R.id.textView5);
         ArrayList<TextView> todoViews = new ArrayList<TextView>();
         todoViews.add(todo1);
         todoViews.add(todo2);
         todoViews.add(todo3);
         todoViews.add(todo4);
+        todoViews.add(todo5);
 
 
         switchFragsButton.setOnClickListener(new View.OnClickListener() {
