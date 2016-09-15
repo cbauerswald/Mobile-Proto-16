@@ -23,17 +23,20 @@ public class SettingsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
 
+        //grabbing buttons
         Button switchFragsButton = (Button) view.findViewById(R.id.to_main_page);
 
-        final Button blueButton = (Button) view.findViewById(R.id.blue_button);
+        final Button blueButton = (Button) view.findViewById(R.id.blue_button); //final so that it can be accessed in onClickListener, same below
         final Button greenButton = (Button) view.findViewById(R.id.green_button);
         final Button roseButton = (Button) view.findViewById(R.id.rose_button);
 
+        //connecting buttons to their color through a map
         final Map<Button, Integer> buttonsToColors= new HashMap<Button, Integer>();
         buttonsToColors.put(blueButton, R.color.blue);
         buttonsToColors.put(greenButton, R.color.green);
         buttonsToColors.put(roseButton, R.color.rose);
 
+        //setting up buttons to change background colors
         blueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,12 +58,15 @@ public class SettingsFragment extends Fragment {
             }
         });
 
+        //setting up button to change the Fragment
         switchFragsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
+                // replace SettingsFragment with MainActivityFragment
+                //"CURRENT_FRAGMENT" label makes it easier to grab that element some other time, should that be necessary
                 fragmentTransaction.replace(R.id.fragment_holder, new MainActivityFragment(), "CURRENT_FRAGMENT");
 
                 fragmentTransaction.commit();
@@ -73,7 +79,7 @@ public class SettingsFragment extends Fragment {
     private void setBackgroundColor(Button button, Map<Button, Integer> buttonsToColors) {
         int colorId = buttonsToColors.get(button);
         int color = ContextCompat.getColor(getActivity(), colorId);
-        View view = getActivity().getWindow().getDecorView();
+        View view = getActivity().getWindow().getDecorView(); //changes the background of the activity, so that it stays for all fragments
         view.setBackgroundColor(color);
     }
 }
