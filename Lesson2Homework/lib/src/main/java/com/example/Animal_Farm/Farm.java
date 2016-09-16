@@ -6,10 +6,14 @@ import java.util.Collections;
 
 public class Farm {
 
-    ArrayList<com.example.Animal_Farm.Animal> animals;
+//    remember to make variables private! That's why we create getters and setters
+//    also, you don't have to reference your class as com.example.Animal_farm.Animal. Just Animal
+//    will do, since you're importing the package above.
+    private ArrayList<com.example.Animal_Farm.Animal> animals;
 
     public Farm() {
-        animals = new ArrayList<com.example.Animal_Farm.Animal>();
+//        not necessary to say type twice since you say it above
+        animals = new ArrayList<>();
     }
 
     public void addAnimal(com.example.Animal_Farm.Animal a) {

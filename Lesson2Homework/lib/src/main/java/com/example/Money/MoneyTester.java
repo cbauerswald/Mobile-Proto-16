@@ -3,6 +3,11 @@ package com.example.Money;
 public class MoneyTester {
 
     public static void main(String[] args) {
+        MoneyTester tester = new MoneyTester();
+        tester.runTests();
+    }
+
+    public void runTests(){
         com.example.Money.Account a = new com.example.Money.CheckingAccount(100);
         System.out.println(a);
         a.setAmount(20);
