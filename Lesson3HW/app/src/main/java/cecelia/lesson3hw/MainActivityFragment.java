@@ -34,6 +34,7 @@ public class MainActivityFragment extends Fragment {
         TextView todo4 = (TextView) view.findViewById(R.id.textView4);
         TextView todo5 = (TextView) view.findViewById(R.id.textView5);
 
+//        awesome, it's great how you were thinking about making the code easier to read.
         //putting textViews in an array for easier looping
         ArrayList<TextView> todoViews = new ArrayList<TextView>();
         todoViews.add(todo1);

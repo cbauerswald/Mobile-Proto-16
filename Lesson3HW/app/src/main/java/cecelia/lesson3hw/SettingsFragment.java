@@ -30,6 +30,9 @@ public class SettingsFragment extends Fragment {
         final Button greenButton = (Button) view.findViewById(R.id.green_button);
         final Button roseButton = (Button) view.findViewById(R.id.rose_button);
 
+//        the way you map colors to buttons is pretty cool! a maybe simpler way of doing this is
+//        using the Color library (import android.graphics.Color; Color.red;), but I like how you
+//        used values from the color.xml
         //connecting buttons to their color through a map
         final Map<Button, Integer> buttonsToColors= new HashMap<Button, Integer>();
         buttonsToColors.put(blueButton, R.color.blue);
@@ -79,6 +82,8 @@ public class SettingsFragment extends Fragment {
     private void setBackgroundColor(Button button, Map<Button, Integer> buttonsToColors) {
         int colorId = buttonsToColors.get(button);
         int color = ContextCompat.getColor(getActivity(), colorId);
+//        another way to do this is to do use findViewByID and change the background of the coordinator
+//        layout in activity_main.xml
         View view = getActivity().getWindow().getDecorView(); //changes the background of the activity, so that it stays for all fragments
         view.setBackgroundColor(color);
     }
