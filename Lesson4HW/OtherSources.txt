@@ -1,2 +1,1 @@
-http://stackoverflow.com/questions/13446935/fragmenttransaction-replace-not-working
-https://developer.android.com/guide/components/fragments.html
+http://stackoverflow.com/questions/6703390/listview-setonitemclicklistener-not-working-by-adding-button
