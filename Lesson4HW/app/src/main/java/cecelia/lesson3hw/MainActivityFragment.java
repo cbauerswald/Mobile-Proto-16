@@ -37,6 +37,7 @@ public class MainActivityFragment extends Fragment {
         return view;
     }
 
+    // may have been easier to put the AlertDialogs in your Adapter
     private void setOnClickListeners(ListView listView, final ToDoAdapter todoAdapter) {
         //when you click on list text, a alert dialog opens to edit the Todo
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

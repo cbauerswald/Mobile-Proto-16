@@ -21,6 +21,9 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.fragment_holder, new MainActivityFragment(), "CURRENT_FRAGMENT");
 
         fragmentTransaction.commit();
+
+        // you still want to keep the option to switch to a settings page since we'll
+        // build off of that for the next homework
     }
 
 }
