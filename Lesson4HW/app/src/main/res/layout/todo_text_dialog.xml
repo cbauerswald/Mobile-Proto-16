@@ -6,7 +6,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/todoInput"
+        android:id="@+id/todo_input"
         android:hint="Write your to do item here."
         android:layout_gravity="center_horizontal"
         android:layout_margin="10dp"/>

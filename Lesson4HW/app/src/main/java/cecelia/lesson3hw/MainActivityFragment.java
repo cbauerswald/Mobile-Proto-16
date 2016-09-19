@@ -18,7 +18,6 @@ import butterknife.ButterKnife;
 
 public class MainActivityFragment extends Fragment {
     @BindView(R.id.add_todo_button) Button addTodoButton;
-    @BindView(R.id.todoInput) EditText todoInput;
     @BindView(R.id.to_do_list)  ListView listView;
 
     public MainActivityFragment() {
@@ -70,12 +69,13 @@ public class MainActivityFragment extends Fragment {
 
         //setting custom view to alert dialog
         View layout = setBuilderCustomLayout(builder);
+        EditText todoInput = (EditText) layout.findViewById(R.id.todo_input);
 
 
         //grabbing the input as final so that we can change from the listener
-        initializeTextField(value);
+        initializeTextField(value, todoInput);
 
-        setDialogPositiveNegativeButtons(builder, action, adapter, value, position);
+        setDialogPositiveNegativeButtons(builder, todoInput, action, adapter, value, position);
 
         return builder.create();
     }
@@ -119,13 +119,13 @@ public class MainActivityFragment extends Fragment {
         return builder;
     }
 
-    private void initializeTextField(String value) {
+    private void initializeTextField(String value, EditText todoInput) {
         if (!value.isEmpty()) {
             todoInput.setText(value);
         }
     }
 
-    private void setDialogPositiveNegativeButtons(AlertDialog.Builder builder, final String action, final ToDoAdapter adapter, final String value, final int position) {
+    private void setDialogPositiveNegativeButtons(AlertDialog.Builder builder, final EditText todoInput, final String action, final ToDoAdapter adapter, final String value, final int position) {
         //setting the positive button to record the new to do unless no new to do was entered
         builder.setPositiveButton("Done", new DialogInterface.OnClickListener() {
             @Override
