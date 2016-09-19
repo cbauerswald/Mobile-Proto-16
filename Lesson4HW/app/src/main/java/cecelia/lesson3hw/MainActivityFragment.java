@@ -10,14 +10,16 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.EditText;
-
-
 import java.util.ArrayList;
-import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class MainActivityFragment extends Fragment {
+    @BindView(R.id.add_todo_button) Button addTodoButton;
+    @BindView(R.id.todoInput) EditText todoInput;
+    @BindView(R.id.to_do_list)  ListView listView;
 
     public MainActivityFragment() {
     }
@@ -26,17 +28,17 @@ public class MainActivityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
+        ButterKnife.bind(this, view);
 
         ToDoAdapter todoAdapter = createToDoAdapter();
         ListView listView = createListView(view, todoAdapter);
-        Button addTodoButton = (Button) view.findViewById(R.id.add_todo_button);
 
-        setOnClickListeners(listView, addTodoButton, todoAdapter);
+        setOnClickListeners(listView, todoAdapter);
 
         return view;
     }
 
-    private void setOnClickListeners(ListView listView, Button addTodoButton, final ToDoAdapter todoAdapter) {
+    private void setOnClickListeners(ListView listView, final ToDoAdapter todoAdapter) {
         //when you click on list text, a alert dialog opens to edit the Todo
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -71,10 +73,9 @@ public class MainActivityFragment extends Fragment {
 
 
         //grabbing the input as final so that we can change from the listener
-        final EditText todoInput = (EditText) layout.findViewById(R.id.todoInput);
-        initializeTextField(todoInput, value);
+        initializeTextField(value);
 
-        setDialogPositiveNegativeButtons(builder, todoInput, action, adapter, value, position);
+        setDialogPositiveNegativeButtons(builder, action, adapter, value, position);
 
         return builder.create();
     }
@@ -101,7 +102,6 @@ public class MainActivityFragment extends Fragment {
     }
 
     private ListView createListView(View view, ToDoAdapter todoAdapter) {
-        ListView listView = (ListView) view.findViewById(R.id.to_do_list);
         listView.setAdapter(todoAdapter);
         return listView;
     }
@@ -119,13 +119,13 @@ public class MainActivityFragment extends Fragment {
         return builder;
     }
 
-    private void initializeTextField(TextView todoInput, String value) {
+    private void initializeTextField(String value) {
         if (!value.isEmpty()) {
             todoInput.setText(value);
         }
     }
 
-    private void setDialogPositiveNegativeButtons(AlertDialog.Builder builder, final TextView todoInput, final String action, final ToDoAdapter adapter, final String value, final int position) {
+    private void setDialogPositiveNegativeButtons(AlertDialog.Builder builder, final String action, final ToDoAdapter adapter, final String value, final int position) {
         //setting the positive button to record the new to do unless no new to do was entered
         builder.setPositiveButton("Done", new DialogInterface.OnClickListener() {
             @Override
