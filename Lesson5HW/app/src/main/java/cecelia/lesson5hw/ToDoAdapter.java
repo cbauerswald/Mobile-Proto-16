@@ -150,7 +150,7 @@ public class ToDoAdapter extends ArrayAdapter<ToDoItem> {
             }
         });
     }
-    
+
     private void editToDo(String textInput, int position, ToDoItem oldToDoItem) {
         this.remove(oldToDoItem);
         if (!textInput.isEmpty()) {

@@ -51,10 +51,7 @@ public class MainActivityFragment extends Fragment {
     }
 
     private void setOnClickListeners(final ToDoAdapter todoAdapter) {
-        //when you click on list text, a alert dialog opens to edit the Todo
-
-
-        //the "+" in the corner opens a similar alert dialog for a brand new todo
+        //when you click on list text, a alert dialog opens to edit the Todo w/ the arg -1 to indicate a new todo
         addTodoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -94,19 +91,24 @@ public class MainActivityFragment extends Fragment {
         Cursor toDoDbCursor = readDb.query(ToDoContract.ToDoEntry.TABLE_NAME, ToDoHelper.itemProjection, null, null, null, null, null, null);
         Boolean hasItems = toDoDbCursor.moveToFirst();
         Boolean atLastElement = false;
+
         while (!atLastElement && hasItems) {
-            String itemDescription = toDoDbCursor.getString(
-                    toDoDbCursor.getColumnIndexOrThrow(ToDoContract.ToDoEntry.COLUMN_NAME_ITEM)
-            );
-            Boolean itemStatus =  toDoDbCursor.getInt(
-                    toDoDbCursor.getColumnIndexOrThrow(ToDoContract.ToDoEntry.COLUMN_NAME_STATUS)
-            ) > 0;
-            allItems.add(new ToDoItem(itemDescription, itemStatus));
+            addDbToDoItemtoList(allItems, toDoDbCursor);
             atLastElement = toDoDbCursor.isLast();
             toDoDbCursor.moveToNext();
         }
 
         return allItems;
+    }
+
+    private void addDbToDoItemtoList(ArrayList<ToDoItem> allItems, Cursor toDoDbCursor) {
+        String itemDescription = toDoDbCursor.getString(
+                toDoDbCursor.getColumnIndexOrThrow(ToDoContract.ToDoEntry.COLUMN_NAME_ITEM)
+        );
+        Boolean itemStatus =  toDoDbCursor.getInt(
+                toDoDbCursor.getColumnIndexOrThrow(ToDoContract.ToDoEntry.COLUMN_NAME_STATUS)
+        ) > 0;
+        allItems.add(new ToDoItem(itemDescription, itemStatus));
     }
 
 }

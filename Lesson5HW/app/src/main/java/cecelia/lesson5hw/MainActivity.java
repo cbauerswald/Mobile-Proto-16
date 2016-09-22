@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 
 import java.util.Map;
@@ -18,21 +19,16 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initializeBackground();
+        addMainPageFragment();
+    }
 
+    private void initializeBackground() {
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
-        int defaultValue = ContextCompat.getColor(this, R.color.white);
-        int background = sharedPref.getInt(getString(R.string.saved_background), defaultValue);
-
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-        //Add the MainActivityFragment as the starting Fragment when the app is opened
-        fragmentTransaction.replace(R.id.fragment_holder, new MainActivityFragment(), "CURRENT_FRAGMENT");
-
-        fragmentTransaction.commit();
+        int background = sharedPref.getInt(getString(R.string.saved_background), R.color.white);
+        this.setBackgroundColor(background);
     }
 
     public void setBackgroundColor(int colorId) {
@@ -42,11 +38,25 @@ public class MainActivity extends AppCompatActivity {
         this.backgroundColor = colorId;
     }
 
+    public void addMainPageFragment() {
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        //Add the MainActivityFragment as the starting Fragment when the app is opened
+        fragmentTransaction.replace(R.id.fragment_holder, new MainActivityFragment(), "CURRENT_FRAGMENT");
+        fragmentTransaction.commit();
+    }
+
+    public int getBackgroundColor() {
+        return this.backgroundColor;
+    }
+
     @Override
     protected void onStop() {
         super.onStop();
+        Log.d("MainActivity", "butts");
         SharedPreferences sharedPreferences = this.getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt(getString(R.string.saved_background), this.backgroundColor);
+        editor.commit();
     }
 }
