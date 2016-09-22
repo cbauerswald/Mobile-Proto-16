@@ -27,7 +27,9 @@ This is class is a **4 credit Independent Study** (IS) in engineering. Note that
 
 ### Office Hours
 Office Hours will be **8-10pm Sunday and Wednesday night in WH3**:
+ - **Sat** 5-6pm Patrick
  - **Sun:** 8-9pm Hieu + Patrick, 9-10pm Nora + Deniz
+ - **Tues:** 8-10pm Hieu
  - **Wed:** 8-9pm David + Shruti, 9-10pm Bill
 
 If you need help and it's not during office hours, check out our Slack channel, [#mobileproto](https://olin.slack.com/messages/mobileproto/). We advise using it over emailing us when you have code questions (but emailing us is great too). Other people might have the same questions, so using the Slack channel can help them out too.
@@ -87,13 +89,16 @@ This will be the rubric we will be using for your homework assignments:
 ##### Completion: 20 points
 
 * 20 - You implemented all of the required features in the assignment. The assignment is complete
-* 10 - Some or most of the required features were implemented.
-* 0 - Less than half of the desired features were implemented.
+* 15 - All major features were implemented. You didn't get to one or two small features.
+* 10 - Some of the required features were implemented.
+* 5 - An attempt was made to implement some of the of the desired features.
+* 0 - Very few or none of the desired features were implemented.
 
 ##### Bug free: 10 points
 
 * 10 - The app is bug free
-* 0 - Your app has one or more bugs, causing unexpected behavior.
+* 5 - Your app has one or two bugs, occassionally causing unexpected behavior
+* 0 - Your app has multiple bugs, frequently causing unexpected behavior.
 
 #### Quality: 20 points
 
