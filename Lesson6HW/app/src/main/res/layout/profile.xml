@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="0dp"
-    android:paddingLeft="0dp"
-    android:paddingRight="0dp"
-    android:paddingTop="0dp"
-    tools:context="cecelia.lesson6hw.MainActivity"
+    android:layout_width="match_parent" android:layout_height="match_parent"
     android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/search_bar"
-        android:background="@color/colorPrimaryDark">
+        android:background="@color/colorPrimaryDark"
+        android:layout_margin="0dp"
+        android:padding="0dp">
 
         <EditText
             android:layout_width="0dp"
@@ -40,10 +35,105 @@
             android:padding="15dp"/>
     </LinearLayout>
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:src="@drawable/cececover"
+        android:layout_below="@+id/search_bar"
+        android:id="@+id/cover"
+        android:layout_margin="0dp"
+        android:padding="0dp"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/search_bar"
+        android:layout_below="@+id/cover"
+        android:orientation="horizontal"
+        android:id="@+id/profile_options">
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="0.50"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.80"
+                android:src="@drawable/ceceprop"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.20"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Cecelia Auerswald"
+                android:gravity="center"
+                android:layout_marginBottom="10dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="0.50"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_height="0dp"
+                android:layout_weight="0.50"
+                android:layout_width="match_parent"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_weight="0.50"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/messenger_large"
+                    android:background="@color/white"/>
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_weight="0.50"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/add_friend"
+                    android:background="@color/white"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_height="0dp"
+                android:layout_weight="0.50"
+                android:layout_width="match_parent"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_weight="0.50"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/information"
+                    android:background="@color/white"/>
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_weight="0.50"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/more"
+                    android:background="@color/white"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profile_options"
         android:layout_alignRight="@+id/search_bar"
         android:layout_alignEnd="@+id/search_bar"
         android:id="@+id/top_panel">
@@ -51,27 +141,28 @@
         <ImageButton
             android:layout_width="0dp"
             android:layout_weight="0.33"
-            android:layout_height="wrap_content"
+            android:layout_height="90dp"
             android:text=""
             android:paddingBottom="20dp"
             android:paddingTop="20dp"
             android:id="@+id/news_feed_button"
-            android:src="@drawable/rss_white"
+            android:src="@drawable/post_it"
             android:layout_gravity="left|top"
             android:layout_below="@+id/linearLayout"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:background="@color/colorPrimary"/>
+            android:background="@color/colorAccent"
+            android:clickable="false" />
 
         <ImageButton
             android:layout_width="0dp"
             android:layout_weight="0.33"
-            android:layout_height="wrap_content"
+            android:layout_height="90dp"
             android:text=""
             android:paddingBottom="20dp"
             android:paddingTop="20dp"
             android:id="@+id/profile_button"
-            android:src="@drawable/avatar"
+            android:src="@drawable/picture"
             android:layout_margin="0dp"
             android:layout_gravity="left|top"
             android:layout_below="@+id/linearLayout"
@@ -82,11 +173,11 @@
         <ImageButton
             android:layout_width="0dp"
             android:layout_weight="0.33"
-            android:layout_height="wrap_content"
+            android:layout_height="90dp"
             android:text=""
             android:paddingBottom="20dp"
             android:paddingTop="20dp"
-            android:src="@drawable/app"
+            android:src="@drawable/many_friends"
             android:id="@+id/favorites_button"
             android:layout_gravity="left|top"
             android:layout_below="@+id/linearLayout"
@@ -101,122 +192,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/top_panel"
-        android:id="@+id/shruti"
-        android:padding="@dimen/post_padding">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_alignParentTop="true"
-            android:background="@drawable/border"
-            android:clickable="true"
-            android:layout_marginBottom="0dp"
-            android:paddingBottom="30dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <ImageButton
-                    android:layout_width="@dimen/newsfeed_propic_width"
-                    android:layout_height="@dimen/newsfeed_propic_width"
-                    android:padding="0dp"
-                    android:id="@+id/shruti_propic_button"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignLeft="@+id/post_layout"
-                    android:layout_margin="@dimen/newsfeed_propic_margin"
-                    android:src="@drawable/shrutz_propic"
-                    />
-
-                <TextView
-                    android:layout_width="@dimen/newsfeed_propic_width"
-                    android:layout_marginLeft="@dimen/newsfeed_propic_margin"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="Shruti"
-                    android:gravity="center"
-                    android:id="@+id/name_shruti"
-                    android:textSize="15dp"
-                    android:layout_below="@+id/shruti_propic_button"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:id="@+id/shruti_post_layout">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="250dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/newsfeed_propic_margin"
-                        android:layout_marginBottom="@dimen/newsfeed_propic_margin"
-                        android:layout_marginLeft="0dp"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text="Check out my cool cats. You all are the worst. I like death. I BOX."
-                        android:id="@+id/post"
-                        android:textColor="@color/black"
-                        android:layout_alignTop="@+id/propic_button"
-                        android:layout_toRightOf="@+id/propic_button"
-                        android:layout_toEndOf="@+id/propic_button"
-                        android:textSize="15sp" />
-
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_below="@+id/post">
-
-                        <ImageView
-                            android:layout_width="177dp"
-                            android:layout_height="match_parent"
-                            android:src="@drawable/cat"
-                            android:id="@+id/cat1"/>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/scream_cat"
-                                android:layout_below="@+id/cat1" />
-                            <ImageButton
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/add_bl"
-                                android:background="@drawable/scream_cat"
-                                android:alpha="0.5"/>
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/shruti"
         android:id="@+id/bill"
         android:padding="@dimen/post_padding">
 
@@ -235,7 +210,7 @@
                 <ImageButton
                     android:layout_width="@dimen/newsfeed_propic_width"
                     android:layout_height="@dimen/newsfeed_propic_width"
-                    android:src="@drawable/bill"
+                    android:src="@drawable/ceceprop_small"
                     android:padding="0dp"
                     android:id="@+id/bill_propic_button"
                     android:layout_alignParentTop="true"
@@ -247,7 +222,7 @@
                     android:layout_marginLeft="@dimen/newsfeed_propic_margin"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="Bill"
+                    android:text="Cecelia"
                     android:gravity="center"
                     android:id="@+id/name_bill"
                     android:textSize="15dp"
@@ -268,7 +243,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="100dp"
                     android:id="@+id/article_pic"
-                    android:src="@drawable/baseball"
+                    android:src="@drawable/pancake"
                     android:background="@color/white"
                     android:layout_marginTop="10dp" />
 
@@ -283,7 +258,7 @@
                         android:layout_marginBottom="@dimen/newsfeed_propic_margin"
                         android:layout_marginLeft="0dp"
                         android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text="Baseball is the %$#!"
+                        android:text="Pancakes are the %$#!"
                         android:id="@+id/bill_post"
                         android:textColor="@color/black"
                         android:layout_below="@+id/article_pic"

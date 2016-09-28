@@ -4,5 +4,6 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="newsfeed_propic_margin">10dp</dimen>
     <dimen name="newsfeed_propic_width">50dp</dimen>
-    <dimen name="post_margin">20dp</dimen>
+    <dimen name="post_margin">10dp</dimen>
+    <dimen name="post_padding">10dp</dimen>
 </resources>
