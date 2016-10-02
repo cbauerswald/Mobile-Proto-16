@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--http://stackoverflow.com/questions/9211208/how-to-draw-border-on-just-one-side-of-a-linear-layout-->
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+<!--<item  android:drawable="@drawable/shrutz_propic" />-->
+<item>
+    <shape android:shape="rectangle" android:padding="10dp">
+        <corners android:radius="20dp"/>
+    </shape>
+</item>
+</layer-list>

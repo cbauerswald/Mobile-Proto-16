@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="0dp"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="0dp"
+    tools:context="cecelia.lesson6hw.MainActivity"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/search_bar"
+        android:background="@color/colorPrimaryDark">
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight=".70"
+            android:layout_height="wrap_content"
+            android:id="@+id/search_field"
+            android:drawableLeft="@drawable/magnif_black"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:padding="15dp"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/notif_black"
+            android:id="@+id/imageButton"
+            android:textSize="24sp"
+            android:background="@color/colorPrimaryDark"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:padding="15dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/search_bar"
+        android:layout_alignRight="@+id/search_bar"
+        android:layout_alignEnd="@+id/search_bar"
+        android:id="@+id/top_panel">
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_weight="0.33"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
+            android:id="@+id/news_feed_button"
+            android:src="@drawable/rss_white"
+            android:layout_gravity="left|top"
+            android:layout_below="@+id/linearLayout"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="@color/colorPrimary"/>
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_weight="0.33"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
+            android:id="@+id/profile_button"
+            android:src="@drawable/avatar"
+            android:layout_margin="0dp"
+            android:layout_gravity="left|top"
+            android:layout_below="@+id/linearLayout"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="@color/colorPrimary"/>
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_weight="0.33"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
+            android:src="@drawable/app"
+            android:id="@+id/favorites_button"
+            android:layout_gravity="left|top"
+            android:layout_below="@+id/linearLayout"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="@color/colorPrimary"/>
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top_panel"
+        android:id="@+id/shruti"
+        android:padding="@dimen/post_padding">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/border"
+            android:clickable="true"
+            android:layout_marginBottom="0dp"
+            android:paddingBottom="30dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:layout_width="@dimen/newsfeed_propic_width"
+                    android:layout_height="@dimen/newsfeed_propic_width"
+                    android:padding="0dp"
+                    android:id="@+id/shruti_propic_button"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignLeft="@+id/post_layout"
+                    android:layout_margin="@dimen/newsfeed_propic_margin"
+                    android:src="@drawable/shrutz_propic"
+                    />
+
+                <TextView
+                    android:layout_width="@dimen/newsfeed_propic_width"
+                    android:layout_marginLeft="@dimen/newsfeed_propic_margin"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Shruti"
+                    android:gravity="center"
+                    android:id="@+id/name_shruti"
+                    android:textSize="15dp"
+                    android:layout_below="@+id/shruti_propic_button"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/shruti_post_layout">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/newsfeed_propic_margin"
+                        android:layout_marginBottom="@dimen/newsfeed_propic_margin"
+                        android:layout_marginLeft="0dp"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Check out my cool cats. You all are the worst. I like death. I BOX."
+                        android:id="@+id/post"
+                        android:textColor="@color/black"
+                        android:layout_alignTop="@+id/propic_button"
+                        android:layout_toRightOf="@+id/propic_button"
+                        android:layout_toEndOf="@+id/propic_button"
+                        android:textSize="15sp" />
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_below="@+id/post">
+
+                        <ImageView
+                            android:layout_width="177dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/cat"
+                            android:id="@+id/cat1"/>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/scream_cat"
+                                android:layout_below="@+id/cat1" />
+                            <ImageButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/add_bl"
+                                android:background="@drawable/scream_cat"
+                                android:alpha="0.5"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/shruti"
+        android:id="@+id/bill"
+        android:padding="@dimen/post_padding">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/border">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:layout_width="@dimen/newsfeed_propic_width"
+                    android:layout_height="@dimen/newsfeed_propic_width"
+                    android:src="@drawable/bill"
+                    android:padding="0dp"
+                    android:id="@+id/bill_propic_button"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignLeft="@+id/post_layout"
+                    android:layout_margin="@dimen/newsfeed_propic_margin" />
+
+                <TextView
+                    android:layout_width="@dimen/newsfeed_propic_width"
+                    android:layout_marginLeft="@dimen/newsfeed_propic_margin"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Bill"
+                    android:gravity="center"
+                    android:id="@+id/name_bill"
+                    android:textSize="15dp"
+                    android:layout_below="@+id/bill_propic_button"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/post_layout">
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:id="@+id/article_pic"
+                    android:src="@drawable/baseball"
+                    android:background="@color/white"
+                    android:layout_marginTop="10dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/newsfeed_propic_margin"
+                        android:layout_marginBottom="@dimen/newsfeed_propic_margin"
+                        android:layout_marginLeft="0dp"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Baseball is the %$#!"
+                        android:id="@+id/bill_post"
+                        android:textColor="@color/black"
+                        android:layout_below="@+id/article_pic"
+                        android:textStyle="bold"
+                        android:textSize="17sp" />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/add_blue"
+                        android:background="@color/white"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/unlink"
+                android:background="@color/white"
+                android:layout_margin="20dp"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

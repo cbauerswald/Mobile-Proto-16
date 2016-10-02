@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/search_bar"
+        android:background="@color/colorPrimaryDark">
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight=".70"
+            android:layout_height="wrap_content"
+            android:id="@+id/search_field"
+            android:drawableLeft="@drawable/magnif_black"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:padding="15dp"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/notif_black"
+            android:id="@+id/imageButton"
+            android:textSize="24sp"
+            android:background="@color/colorPrimaryDark"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:padding="15dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/my_favorites"
+        android:layout_below="@+id/search_bar">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/left_large"
+            android:background="@color/white"
+            android:padding="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:padding="10dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:text="My Favorites"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/my_favs_title"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/my_favorites">
+        <LinearLayout
+            android:layout_row="0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageButton
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:src="@drawable/messenger"
+                android:background="@color/colorPrimary"
+                android:layout_margin="10dp"
+                android:padding="25dp"/>
+
+            <ImageButton
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:src="@drawable/insta"
+                android:background="@color/colorPrimary"
+                android:layout_margin="10dp"
+                android:padding="25dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_row="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageButton
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:src="@drawable/calendar"
+                android:background="@color/colorPrimary"
+                android:layout_margin="10dp"
+                android:padding="25dp"/>
+
+            <ImageButton
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:src="@drawable/location"
+                android:background="@color/colorPrimary"
+                android:layout_margin="10dp"
+                android:padding="25dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_row="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageButton
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:src="@drawable/bookmark"
+                android:background="@color/colorPrimary"
+                android:layout_margin="10dp"
+                android:padding="25dp" />
+
+            <ImageButton
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:src="@drawable/gamepad"
+                android:background="@color/colorPrimary"
+                android:layout_margin="10dp"
+                android:padding="25dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/settings_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:src="@drawable/ellipsis"
+        android:tint="@color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="10dp"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/add_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:src="@drawable/add"
+        android:tint="@color/white"
+        android:layout_alignTop="@+id/settings_button"
+        android:layout_toLeftOf="@+id/settings_button"
+        android:layout_toStartOf="@+id/settings_button" />
+
+
+</RelativeLayout>

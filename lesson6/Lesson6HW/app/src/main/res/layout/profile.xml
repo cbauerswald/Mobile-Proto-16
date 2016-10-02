@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/search_bar"
+        android:background="@color/colorPrimaryDark"
+        android:layout_margin="0dp"
+        android:padding="0dp">
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight=".70"
+            android:layout_height="wrap_content"
+            android:id="@+id/search_field"
+            android:drawableLeft="@drawable/magnif_black"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:padding="15dp"
+            android:text="Cecelia Auerswald"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/notif_black"
+            android:id="@+id/imageButton"
+            android:textSize="24sp"
+            android:background="@color/colorPrimaryDark"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:padding="15dp"/>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:src="@drawable/cececover"
+        android:layout_below="@+id/search_bar"
+        android:id="@+id/cover"
+        android:layout_margin="0dp"
+        android:padding="0dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cover"
+        android:orientation="horizontal"
+        android:id="@+id/profile_options">
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="0.50"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.80"
+                android:src="@drawable/ceceprop"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.20"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Cecelia Auerswald"
+                android:gravity="center"
+                android:layout_marginBottom="10dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="0.50"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_height="0dp"
+                android:layout_weight="0.50"
+                android:layout_width="match_parent"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_weight="0.50"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/messenger_large"
+                    android:background="@color/white"/>
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_weight="0.50"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/add_friend"
+                    android:background="@color/white"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_height="0dp"
+                android:layout_weight="0.50"
+                android:layout_width="match_parent"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_weight="0.50"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/information"
+                    android:background="@color/white"/>
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_weight="0.50"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/more"
+                    android:background="@color/white"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profile_options"
+        android:layout_alignRight="@+id/search_bar"
+        android:layout_alignEnd="@+id/search_bar"
+        android:id="@+id/top_panel">
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_weight="0.33"
+            android:layout_height="90dp"
+            android:text=""
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
+            android:id="@+id/news_feed_button"
+            android:src="@drawable/post_it"
+            android:layout_gravity="left|top"
+            android:layout_below="@+id/linearLayout"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="@color/colorAccent"
+            android:clickable="false" />
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_weight="0.33"
+            android:layout_height="90dp"
+            android:text=""
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
+            android:id="@+id/profile_button"
+            android:src="@drawable/picture"
+            android:layout_margin="0dp"
+            android:layout_gravity="left|top"
+            android:layout_below="@+id/linearLayout"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="@color/colorPrimary"/>
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_weight="0.33"
+            android:layout_height="90dp"
+            android:text=""
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
+            android:src="@drawable/many_friends"
+            android:id="@+id/favorites_button"
+            android:layout_gravity="left|top"
+            android:layout_below="@+id/linearLayout"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="@color/colorPrimary"/>
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top_panel"
+        android:id="@+id/bill"
+        android:padding="@dimen/post_padding">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/border">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:layout_width="@dimen/newsfeed_propic_width"
+                    android:layout_height="@dimen/newsfeed_propic_width"
+                    android:src="@drawable/ceceprop_small"
+                    android:padding="0dp"
+                    android:id="@+id/bill_propic_button"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignLeft="@+id/post_layout"
+                    android:layout_margin="@dimen/newsfeed_propic_margin" />
+
+                <TextView
+                    android:layout_width="@dimen/newsfeed_propic_width"
+                    android:layout_marginLeft="@dimen/newsfeed_propic_margin"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Cecelia"
+                    android:gravity="center"
+                    android:id="@+id/name_bill"
+                    android:textSize="15dp"
+                    android:layout_below="@+id/bill_propic_button"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/post_layout">
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:id="@+id/article_pic"
+                    android:src="@drawable/pancake"
+                    android:background="@color/white"
+                    android:layout_marginTop="10dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/newsfeed_propic_margin"
+                        android:layout_marginBottom="@dimen/newsfeed_propic_margin"
+                        android:layout_marginLeft="0dp"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Pancakes are the %$#!"
+                        android:id="@+id/bill_post"
+                        android:textColor="@color/black"
+                        android:layout_below="@+id/article_pic"
+                        android:textStyle="bold"
+                        android:textSize="17sp" />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/add_blue"
+                        android:background="@color/white"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/unlink"
+                android:background="@color/white"
+                android:layout_margin="20dp"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

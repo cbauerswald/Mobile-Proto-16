@@ -1,0 +1,54 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/fragment_vertical_margin"
+    android:paddingLeft="@dimen/fragment_horizontal_margin"
+    android:paddingRight="@dimen/fragment_horizontal_margin"
+    android:paddingTop="@dimen/fragment_vertical_margin"
+    android:id="@+id/fragment_main"
+    tools:context="cecelia.lesson5hw.MainActivityFragment">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/to_do"
+        android:id="@+id/todo_text_view"
+        android:textSize="30sp"
+        android:layout_margin="@dimen/fab_margin"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="350dp"
+        android:id="@+id/to_do_list"
+        android:layout_below="@+id/todo_text_view"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/add_todo_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:src="@android:drawable/ic_input_add"
+        android:tint="@android:color/background_light"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/to_do_list"
+        android:layout_alignEnd="@+id/to_do_list" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/settings_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:src="@android:drawable/ic_menu_preferences"
+        android:tint="@android:color/background_light"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/todo_text_view"
+        android:layout_alignStart="@+id/todo_text_view" />
+
+
+</RelativeLayout>
