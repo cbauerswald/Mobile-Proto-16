@@ -30,11 +30,8 @@
         android:src="@android:drawable/ic_input_add"
         android:tint="@android:color/background_light"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/stock_list"
-        android:layout_alignEnd="@+id/stock_list"
-        android:layout_marginRight="65dp"
-        android:layout_marginEnd="65dp"
-        android:layout_marginBottom="52dp" />
+        android:layout_toLeftOf="@+id/refresh_stock_button"
+        android:layout_toStartOf="@+id/refresh_stock_button" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/refresh_stock_button"

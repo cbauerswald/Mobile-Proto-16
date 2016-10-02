@@ -51,9 +51,9 @@ public class MainActivityFragment extends Fragment {
     @BindView(R.id.refresh_stock_button)
     FloatingActionButton refreshButton;
 
-    StockHelper stockHelper;
     StockItemAdapter adapter;
 
+    StockHelper stockHelper;
     SQLiteDatabase writeDb;
     SQLiteDatabase readDb;
 
@@ -63,23 +63,32 @@ public class MainActivityFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
         ButterKnife.bind(this, view);
 
+        initializeDatabaseAndHelpers();
+        initializeStockItemAdapter();
+        setOnClickListeners();
+
+        return view;
+    }
+
+    //initialization methods
+
+    public void initializeDatabaseAndHelpers() {
         this.stockHelper = new StockHelper(getActivity());
         this.writeDb = stockHelper.getWritableDatabase();
         this.readDb = stockHelper.getReadableDatabase();
+    }
 
-        this.adapter = createStockItemAdapter();
+    private void initializeStockItemAdapter() {
+        ArrayList<StockItem> stocks = readItemsFromDatabase();
+        this.adapter = new StockItemAdapter(getActivity(), stocks, this.stockHelper);
+        stockList.setAdapter(this.adapter);
+    }
 
-        createListView(view);
+    public void setOnClickListeners() {
         refreshButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                ArrayList<StockItem> stocks = new ArrayList<StockItem>();
-                for (int i = 0; i < stockList.getAdapter().getCount(); i ++) {
-                    StockItem item = (StockItem) stockList.getAdapter().getItem(i);
-                    int position = adapter.getPosition(item);
-                    adapter.remove(item);
-                    requestForPrice(item.ticker, position);
-                }
+                refreshStocks();
             }
         });
 
@@ -89,45 +98,24 @@ public class MainActivityFragment extends Fragment {
                 createStockItemAlertDialog();
             }
         });
-        return view;
+
     }
 
-    private void createListView(View view) {
-        stockList.setAdapter(this.adapter);
-    }
-
-    private StockItemAdapter createStockItemAdapter() {
-        ArrayList<StockItem> stocks = readItemsFromDatabase();
-        return new StockItemAdapter(getActivity(), stocks, this.stockHelper);
-    }
-
-    private ArrayList<StockItem> readItemsFromDatabase() {
-        SQLiteDatabase readDb = this.stockHelper.getReadableDatabase();
-        ArrayList<StockItem> allItems = new ArrayList<StockItem>();
-        Cursor toDoDbCursor = readDb.query(StockContract.StockEntry.TABLE_NAME, StockHelper.itemProjection, null, null, null, null, null, null);
-        Boolean hasItems = toDoDbCursor.moveToFirst();
-        Boolean atLastElement = false;
-
-        while (!atLastElement && hasItems) {
-            addDbToDoItemtoList(allItems, toDoDbCursor);
-            atLastElement = toDoDbCursor.isLast();
-            toDoDbCursor.moveToNext();
+    //main methods -- refreshing stocks or creating a new stock
+    public void refreshStocks() {
+        for (int i = 0; i < stockList.getAdapter().getCount(); i ++) {
+            StockItem item = (StockItem) stockList.getAdapter().getItem(i);
+            int position = this.adapter.getPosition(item);
+            this.adapter.remove(item);
+            requestForPrice(item.ticker, position);
         }
-
-        return allItems;
     }
 
-    private void addDbToDoItemtoList(ArrayList<StockItem> allItems, Cursor toDoDbCursor) {
-        String itemTicker = toDoDbCursor.getString(
-                toDoDbCursor.getColumnIndexOrThrow(StockContract.StockEntry.COLUMN_NAME_TICKER)
-        );
-        String itemPrice =  toDoDbCursor.getString(
-                toDoDbCursor.getColumnIndexOrThrow(StockContract.StockEntry.COLUMN_NAME_PRICE)
-        );
-        StockItem newStock = new StockItem(itemTicker, itemPrice);
-        allItems.add(newStock);
-//        requestForPrice(newStock);
+    public void createStockItem(String ticker) {
+        requestForPrice(ticker, -1);
     }
+
+    //Add stock alert dialog and alert dialog helper methods
 
     public void createStockItemAlertDialog() {
 
@@ -166,15 +154,10 @@ public class MainActivityFragment extends Fragment {
         return builder;
     }
 
-    public void createStockItem(String ticker) {
-        requestForPrice(ticker, -1);
-    }
+    //Sending and handling API request and helper methods
 
     public void requestForPrice(final String ticker, final int position) {
-        String url = createUrlforTicker(ticker);
-//        final StockItemAdapter adapter = this.adapter;
-//        final StockItemAdapter adapter = this.adapter;
-//        final TextView priceView = (TextView) getViewByPosition(position).findViewById(R.id.stock_price);
+        String url = generateUrlforTicker(ticker);
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
@@ -186,7 +169,7 @@ public class MainActivityFragment extends Fragment {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+                        error.printStackTrace();
                     }
 
                 });
@@ -198,23 +181,18 @@ public class MainActivityFragment extends Fragment {
         try {
             String priceFromResponse = response.getString("l");
             if (position < 0 ) {
-                createNewStockItem(ticker, priceFromResponse);
+                StockItem newStock = createNewListViewStockItem(ticker, priceFromResponse);
+                createItemInDatabase(newStock);
             } else {
+                reinsertEditedStockItemIntoListView(ticker, priceFromResponse, position);
                 editPriceInDatabase(position, priceFromResponse);
-                this.adapter.insert(new StockItem(ticker, priceFromResponse), position);
             }
         } catch (JSONException e){
             e.printStackTrace();
         }
     }
 
-    private void createNewStockItem(String ticker, String price) {
-            StockItem newStock = new StockItem(ticker, price);
-            this.adapter.add(newStock);
-            createItemInDatabase(newStock);
-    }
-
-    public String createUrlforTicker(String ticker) {
+    public String generateUrlforTicker(String ticker) {
         Uri.Builder builder = new Uri.Builder();
         builder.scheme("https")
                 .authority("finance.google.com")
@@ -223,6 +201,34 @@ public class MainActivityFragment extends Fragment {
                 .appendQueryParameter("client", "iq")
                 .appendQueryParameter("q", ticker);
         return builder.build().toString();
+    }
+
+    private StockItem createNewListViewStockItem(String ticker, String price) {
+            StockItem newStock = new StockItem(ticker, price);
+            this.adapter.add(newStock);
+            return newStock;
+    }
+
+    private void reinsertEditedStockItemIntoListView(String ticker, String price, int position) {
+        this.adapter.insert(new StockItem(ticker, price), position);
+    }
+
+    //reading, adding, and editing database and helper methods
+
+    private ArrayList<StockItem> readItemsFromDatabase() {
+
+        ArrayList<StockItem> allItems = new ArrayList<StockItem>();
+        Cursor toDoDbCursor = this.readDb.query(StockContract.StockEntry.TABLE_NAME, StockHelper.itemProjection, null, null, null, null, null, null);
+        Boolean hasItems = toDoDbCursor.moveToFirst();
+        Boolean atLastElement = false;
+
+        while (!atLastElement && hasItems) {
+            addDatabaseItemtoList(allItems, toDoDbCursor);
+            atLastElement = toDoDbCursor.isLast();
+            toDoDbCursor.moveToNext();
+        }
+
+        return allItems;
     }
 
     private void createItemInDatabase(StockItem stockItem) {
@@ -242,26 +248,15 @@ public class MainActivityFragment extends Fragment {
         this.readDb.update(StockContract.StockEntry.TABLE_NAME, values, selection, selectionArgs);
     }
 
-
-    public static void hideSoftKeyboard(Activity activity) {
-        InputMethodManager inputMethodManager =
-                (InputMethodManager) activity.getSystemService(
-                        Activity.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(
-                activity.getCurrentFocus().getWindowToken(), 0);
-    }
-
-    //taken from http://stackoverflow.com/questions/24811536/android-listview-get-item-view-by-position
-    public View getViewByPosition(int pos) {
-        final int firstListItemPosition = stockList.getFirstVisiblePosition();
-        final int lastListItemPosition = firstListItemPosition + stockList.getChildCount() - 1;
-
-        if (pos < firstListItemPosition || pos > lastListItemPosition ) {
-            return stockList.getAdapter().getView(pos, null, stockList);
-        } else {
-            final int childIndex = pos - firstListItemPosition;
-            return stockList.getChildAt(childIndex);
-        }
+    private void addDatabaseItemtoList(ArrayList<StockItem> allItems, Cursor toDoDbCursor) {
+        String itemTicker = toDoDbCursor.getString(
+                toDoDbCursor.getColumnIndexOrThrow(StockContract.StockEntry.COLUMN_NAME_TICKER)
+        );
+        String itemPrice =  toDoDbCursor.getString(
+                toDoDbCursor.getColumnIndexOrThrow(StockContract.StockEntry.COLUMN_NAME_PRICE)
+        );
+        StockItem newStock = new StockItem(itemTicker, itemPrice);
+        allItems.add(newStock);
     }
 
     private String getItemDbId(int position) {
@@ -272,4 +267,5 @@ public class MainActivityFragment extends Fragment {
         );
         return id;
     }
+
 }
