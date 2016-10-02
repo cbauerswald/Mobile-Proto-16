@@ -53,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
+//        remember to be more descriptive for debugging statements. also, it may be more relevant to use Log.i instead
+//        since you aren't debugging a problem
         Log.d("MainActivity", "butts");
         SharedPreferences sharedPreferences = this.getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
