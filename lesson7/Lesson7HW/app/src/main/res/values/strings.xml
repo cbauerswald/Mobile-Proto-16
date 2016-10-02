@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Lesson7HW</string>
+    <string name="price">Price</string>
+    <string name="enter_ticker_here">Enter ticker </string>
+</resources>
