@@ -15,7 +15,7 @@ Before the end of today’s class (Mon Oct 3) each team will turn in a proposal.
 * A quick write up on how you plan to divide up work and integrate features.
 * Where you plan to be in a week (Mon Oct 10) We will be doing informal check-ins to monitor your progress.
 
-Put your proposal in your repository as `Proposal.md`
+After you've been approved by a teacher, put your proposal in your repository as `Proposal.md` and fill out [this survey](https://goo.gl/forms/PVisEoErxKZNqjz53).
 
 ## Wireframes + Design Explanation
 
@@ -25,7 +25,7 @@ On Thur Oct 6 you will submit wireframes for your app. These can be drawn by han
 - What the user can do in that screen/what all the buttons/elements on the screen will do.
 - How the user can get to/away from the screen.
 
-Put all of your wireframes + your explanations in a single `.pdf` file and upload it to your repo as `Design.md`.
+Put all of your wireframes + your explanations in a single `.pdf` file and upload it to your repo as `Design.pdf`.
 
 The wireframes are worth 30 points.
 
