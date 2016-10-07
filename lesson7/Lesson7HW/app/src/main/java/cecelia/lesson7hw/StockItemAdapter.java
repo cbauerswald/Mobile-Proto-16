@@ -17,7 +17,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class StockItemAdapter extends ArrayAdapter<StockItem> {
-
+// remember to delete unused comments and imports
 //    @BindView(R.id.stock_ticker)
 //    TextView stockTicker;
 //    @BindView(R.id.stock_price)
@@ -61,6 +61,7 @@ public class StockItemAdapter extends ArrayAdapter<StockItem> {
         return convertView;
     }
 
+    // remember to rename your methods ;-)
     private void deleteToDo(StockItem stockItem, int position) {
         StockItemAdapter.this.remove(stockItem);
         deleteItemFromDatabase(position);

@@ -43,7 +43,8 @@ import java.io.Console;
 import java.util.ArrayList;
 
 public class MainActivityFragment extends Fragment {
-
+    // seems like there's a small bug with your FABs - when the alert dialog to add a new stock shows up,
+    // your FABs move upwards to right below the last stock
     @BindView(R.id.stock_list)
     ListView stockList;
     @BindView(R.id.add_stock_button)
@@ -106,7 +107,9 @@ public class MainActivityFragment extends Fragment {
         for (int i = 0; i < stockList.getAdapter().getCount(); i ++) {
             StockItem item = (StockItem) stockList.getAdapter().getItem(i);
             int position = this.adapter.getPosition(item);
-            this.adapter.remove(item);
+            this.adapter.remove(item); // for the user, it may be better to instead change the text
+            // for the ticker to something like "..." and then changing only that text when you have a response.
+            // deleting all the items and then adding them back can be jarring to the user.
             requestForPrice(item.ticker, position);
         }
     }
@@ -170,6 +173,12 @@ public class MainActivityFragment extends Fragment {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         error.printStackTrace();
+                        // when the user expects something to happen and there's an error,
+                        // it's helpful to show on the screen that something occurred.
+                        // one possible solution is to use a "toast".
+                        // you can also do different things depending on what the error is (if it's the user
+                        // inputting the wrong stock name or if there's a bad internet connection
+                        // or if it's something else
                     }
 
                 });
